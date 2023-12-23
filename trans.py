@@ -100,24 +100,24 @@ if uploaded_file is not None:
         st.write(data)  # Afficher un aperçu des données après manipulation
         
         # Section d'exportation vers Excel avec choix de l'emplacement
-        '''
-        st.header("Exporter vers Excel")
-        export_location = st.text_input("Entrez le chemin de destination pour l'exportation")
+        
+        #st.header("Exporter vers Excel")
+        #export_location = st.text_input("Entrez le chemin de destination pour l'exportation")
 
-        if st.button("Exporter vers Excel") and export_location:
+        #if st.button("Exporter vers Excel") and export_location:
             # Vérification de l'existence du dossier de destination
-            if not os.path.exists(export_location):
-                st.error("Le chemin spécifié n'existe pas.")
-            else:
+            #if not os.path.exists(export_location):
+                #st.error("Le chemin spécifié n'existe pas.")
+            #else:
                 # Obtention de la date actuelle
-                current_date = datetime.now().strftime("%Y-%m-%d")
+                #current_date = datetime.now().strftime("%Y-%m-%d")
                 # Concaténation du chemin avec le nom du fichier Excel incluant la date
-                excel_file_name = f"data_{current_date}.xlsx"
-                excel_file_path = os.path.join(export_location, excel_file_name)
+                #excel_file_name = f"data_{current_date}.xlsx"
+                #excel_file_path = os.path.join(export_location, excel_file_name)
                 # Exportation vers Excel
-                data.to_excel(excel_file_path, index=False)
-                st.success(f"Exportation réussie vers {excel_file_path}")
-         '''
+                #data.to_excel(excel_file_path, index=False)
+                #st.success(f"Exportation réussie vers {excel_file_path}")
+         
 
         # Bouton pour exporter en fichier Excel
         #if st.button("Exporter en fichier Excel"):
