@@ -100,7 +100,7 @@ if uploaded_file is not None:
         st.write(data)  # Afficher un aperçu des données après manipulation
         
         # Section d'exportation vers Excel avec choix de l'emplacement
-       """
+        '''
         st.header("Exporter vers Excel")
         export_location = st.text_input("Entrez le chemin de destination pour l'exportation")
 
@@ -117,7 +117,7 @@ if uploaded_file is not None:
                 # Exportation vers Excel
                 data.to_excel(excel_file_path, index=False)
                 st.success(f"Exportation réussie vers {excel_file_path}")
-        """
+         '''
 
         # Bouton pour exporter en fichier Excel
         #if st.button("Exporter en fichier Excel"):
