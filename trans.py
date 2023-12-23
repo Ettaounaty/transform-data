@@ -98,8 +98,9 @@ if uploaded_file is not None:
         data['Departement']=Departement
         st.write("Manipulations appliquées :")
         st.write(data)  # Afficher un aperçu des données après manipulation
-        """
+        
         # Section d'exportation vers Excel avec choix de l'emplacement
+       """
         st.header("Exporter vers Excel")
         export_location = st.text_input("Entrez le chemin de destination pour l'exportation")
 
