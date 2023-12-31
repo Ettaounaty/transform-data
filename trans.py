@@ -62,7 +62,7 @@ uploaded_file = st.file_uploader("Choisissez un fichier texte", type=['txt'])
 
 if uploaded_file is not None:
     # Lecture du fichier texte
-    data = pd.read_csv(uploaded_file, delimiter=';', header=None)
+    data = pd.read_csv(uploaded_file, delimiter=';',thousands=None, header=None)
     st.write("Aperçu du fichier importé :")
     st.write(data)
 
