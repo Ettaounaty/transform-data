@@ -1,6 +1,6 @@
 import os
 import streamlit as st
-from datetime import date, datetime
+from datetime import date, datetime, timedelta
 import pandas as pd
 import io  # Importer le module io
 
