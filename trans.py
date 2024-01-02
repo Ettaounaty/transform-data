@@ -106,7 +106,7 @@ if uploaded_file is not None:
 
         data['Compte Marocaine'] = data['Compte Marocaine'].astype(str).str.replace(',', '')
         data['Compte US'] = data['Compte US'].astype(str).str.replace(',', '')
-        data['montant'] = data['montant'].astype(str).str.replace(',', '')
+        #data['montant'] = data['montant'].astype(str).str.replace(',', '')
 
         
         st.write("Manipulations appliquées :")
