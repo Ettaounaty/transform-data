@@ -68,7 +68,7 @@ if uploaded_file is not None:
         #supprimer les trois premiers colonnes
         data.drop(columns=[0,1,2,8,10,11,12], inplace=True)
         # Renommer les colonnes restantes
-        nouveaux_noms = {3: 'Compte US', 4: 'Analytic', 5: 'Departement', 6: 'Compte Marocaine', 7: 'Description', 8: 'signe', 9: 'montant'}
+        nouveaux_noms = {3: 'Compte US', 4: 'Analytic', 5: 'Departement', 6: 'Compte Marocaine', 7: 'Description', 9: 'signe', 10: 'montant'}
         data = data.rename(columns=nouveaux_noms)
         #Supprimer les lignes où la valeur dans la colonne “montant" égale à 0
         data=data[data['montant']!=0]
