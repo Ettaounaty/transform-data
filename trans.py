@@ -81,7 +81,7 @@ if uploaded_file is not None:
         data['Compte US'] = data['Compte US'].astype(str).str.replace('"', '')
         data['Compte Marocaine'] = data['Compte Marocaine'].astype(str).str.replace('=', '')
         data['Compte Marocaine'] = data['Compte Marocaine'].astype(str).str.replace('"', '')
-        data['montant'] = data['montant'].astype(str).str.replace(',', '')
+        data.loc[data['montant']== 0,00, 'montant']= '0'
 
         
         #Supprimer les lignes où la valeur dans la colonne “montant" égale à 0
