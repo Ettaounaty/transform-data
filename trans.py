@@ -75,6 +75,12 @@ if uploaded_file is not None:
         data['Departement'] = data['Departement'].astype(str).str.replace('"', '')
         data['Analytic'] = data['Analytic'].astype(str).str.replace('=', '')
         data['Analytic'] = data['Analytic'].astype(str).str.replace('"', '')
+        data['Description'] = data['Description'].astype(str).str.replace('=', '')
+        data['Description'] = data['Description'].astype(str).str.replace('"', '')
+        data['Compte US'] = data['Compte US'].astype(str).str.replace('=', '')
+        data['Compte US'] = data['Compte US'].astype(str).str.replace('"', '')
+        data['Compte Marocaine'] = data['Compte Marocaine'].astype(str).str.replace('=', '')
+        data['Compte Marocaine'] = data['Compte Marocaine'].astype(str).str.replace('"', '')
 
         
         #Supprimer les lignes où la valeur dans la colonne “montant" égale à 0
