@@ -66,7 +66,7 @@ if uploaded_file is not None:
     if apply_transformations == 'Oui':
         # Manipulations avec le code Python que vous avez déjà
         #supprimer les trois premiers colonnes
-        data.drop(columns=[0,1,2,10,11], inplace=True)
+        data.drop(columns=[0,1,2,10,11,12], inplace=True)
         # Renommer les colonnes restantes
         nouveaux_noms = {3: 'Compte US', 4: 'Analytic', 5: 'Departement', 6: 'Compte Marocaine', 7: 'Description', 8: 'signe', 9: 'montant'}
         data = data.rename(columns=nouveaux_noms)
