@@ -84,7 +84,7 @@ if uploaded_file is not None:
 
         
         #Supprimer les lignes où la valeur dans la colonne “montant" égale à 0
-        data=data[(data['montant']!=0)]
+        data=data[(data['montant']!=0,0)]
         # Supprimer les lignes où 'compte marocaine' commence par '6' et 'analytic' est vide
         data = data[~((data['Compte Marocaine'].astype(str).str.startswith('6')) & (data['Analytic'].isnull()))]
         #remplacer la valeur de dpartement par "551" ou compte marocaine=71972001
