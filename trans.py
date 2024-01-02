@@ -73,40 +73,40 @@ if uploaded_file is not None:
         #Supprimer les lignes où la valeur dans la colonne “montant" égale à 0
         data=data[data['montant']!=0]
         # Supprimer les lignes où 'compte marocaine' commence par '6' et 'analytic' est vide
-        #data = data[~((data['Compte Marocaine'].astype(str).str.startswith('6')) & (data['Analytic'].isnull()))]
+        data = data[~((data['Compte Marocaine'].astype(str).str.startswith('6')) & (data['Analytic'].isnull()))]
         #remplacer la valeur de dpartement par "551" ou compte marocaine=71972001
-        #data.loc[data['Compte Marocaine']== 71972001, "Departement"]= "551"
+        data.loc[data['Compte Marocaine']== 71972001, "Departement"]= "551"
         #remplacer la valeur de dpartement par "531" ou compte marocaine=71973001
-        #data.loc[data['Compte Marocaine']== 71973001, 'Departement']= '531'
+        data.loc[data['Compte Marocaine']== 71973001, 'Departement']= '531'
         #supprimer les lignes ou 'compte marocaine' commence par '7' et 'analytic' est vide 
-        #data=data[~((data['Compte Marocaine'].astype(str).str.startswith('7')) & (data['Analytic'].isnull()))]
+        data=data[~((data['Compte Marocaine'].astype(str).str.startswith('7')) & (data['Analytic'].isnull()))]
         #multiplier montant par "-1" si le signe=C
-        #data.loc[data['signe']=='C', 'montant']*= -1
+        data.loc[data['signe']=='C', 'montant']*= -1
         #supprimer les colonnes "signe" et "Analytic"
-        #data.drop(columns=['signe', 'Analytic'], inplace=True)
+        data.drop(columns=['signe', 'Analytic'], inplace=True)
         #ajouter colonne devise avec la valeur "MAD"
-        #data['Devise']='MAD'
+        data['Devise']='MAD'
         #recuperer colonne departement puis le supprimer puis l'inserer au dernier position
-        #Departement=data['Departement']
-        #data.drop(columns=['Departement'], inplace=True)
-        #data['Departement']=Departement
+        Departement=data['Departement']
+        data.drop(columns=['Departement'], inplace=True)
+        data['Departement']=Departement
         #pour la date actuelle
-        #date_actuelle = datetime.now()
+        date_actuelle = datetime.now()
         #ajouter colonne "date" contenant la date de deernier jour de mos precedent
-        #data['Date'] =(date_actuelle.replace(day=1) - timedelta(days=1)).date()
+        data['Date'] =(date_actuelle.replace(day=1) - timedelta(days=1)).date()
         # Convertir la colonne 'Date' en type datetime
-        #data['Date'] = pd.to_datetime(data['Date'])
+        data['Date'] = pd.to_datetime(data['Date'])
         # Extraire l'année et le mois pour former la colonne 'Période'
-        #data['Période'] = data['Date'].dt.strftime('%Y%m')  
-        #data['Période'] = data['Période'].str.slice(0, 4) + data['Date'].dt.strftime('%m').str.zfill(3)
+        data['Période'] = data['Date'].dt.strftime('%Y%m')  
+        data['Période'] = data['Période'].str.slice(0, 4) + data['Date'].dt.strftime('%m').str.zfill(3)
         #ajouter la colonne reference en concaténant la chaîne "Paie perm mois" avec l'année et le mois.
-        #data['Référence'] = 'Paie perm mois ' + data['Date'].dt.strftime('%m-%Y')
+        data['Référence'] = 'Paie perm mois ' + data['Date'].dt.strftime('%m-%Y')
         # Limiter à 30 caractères si nécessaire
-        #data['Référence'] = data['Référence'].str[:30] 
+        data['Référence'] = data['Référence'].str[:30] 
 
         data['Compte Marocaine'] = data['Compte Marocaine'].astype(str).str.replace(',', '')
         data['Compte US'] = data['Compte US'].astype(str).str.replace(',', '')
-        #data['montant'] = data['montant'].astype(str).str.replace(',', '')
+        data['montant'] = data['montant'].astype(str).str.replace(',', '')
 
         
         st.write("Manipulations appliquées :")
