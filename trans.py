@@ -73,6 +73,8 @@ if uploaded_file is not None:
 
         data['Departement'] = data['Departement'].astype(str).str.replace('=', '')
         data['Departement'] = data['Departement'].astype(str).str.replace('"', '')
+        data['Analytic'] = data['Analytic'].astype(str).str.replace('=', '')
+        data['Analytic'] = data['Analytic'].astype(str).str.replace('"', '')
 
         
         #Supprimer les lignes où la valeur dans la colonne “montant" égale à 0
