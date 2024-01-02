@@ -72,6 +72,9 @@ if uploaded_file is not None:
         data = data.rename(columns=nouveaux_noms)
 
         data['Departement'] = data['Departement'].astype(str).str.replace('=', '')
+        data['Departement'] = data['Departement'].astype(str).str.replace('"', '')
+
+        
         #Supprimer les lignes où la valeur dans la colonne “montant" égale à 0
         data=data[(data['montant']!=0)]
         # Supprimer les lignes où 'compte marocaine' commence par '6' et 'analytic' est vide
