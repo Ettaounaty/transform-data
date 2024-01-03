@@ -71,31 +71,28 @@ if uploaded_file is not None:
         nouveaux_noms = {3: 'Compte US', 4: 'Analytic', 5: 'Departement', 6: 'Compte Marocaine', 7: 'Description', 9: 'signe', 10: 'montant'}
         data = data.rename(columns=nouveaux_noms)
 
-        data['Departement'] = data['Departement'].astype(str).str.replace('=', '')
-        data['Departement'] = data['Departement'].astype(str).str.replace('"', '')
-        data['Analytic'] = data['Analytic'].astype(str).str.replace('=', '')
-        data['Analytic'] = data['Analytic'].astype(str).str.replace('"', '')
-        data['Description'] = data['Description'].astype(str).str.replace('=', '')
-        data['Description'] = data['Description'].astype(str).str.replace('"', '')
-        data['Compte US'] = data['Compte US'].astype(str).str.replace('=', '')
-        data['Compte US'] = data['Compte US'].astype(str).str.replace('"', '')
-        data['Compte Marocaine'] = data['Compte Marocaine'].astype(str).str.replace('=', '')
-        data['Compte Marocaine'] = data['Compte Marocaine'].astype(str).str.replace('"', '')
-        data['montant'] = data['montant'].astype(str).str.replace(',', '')
-        data['montant'] = data['montant'].astype(str).str.replace('000', '')
-        
+        # pour nettoyer les valeurs 
+        for colonne in data.columns:
+            data[colonne] = data[colonne].astype(str).str.replace('=', '').str.replace('"', '')
 
         
+        #conversion colonne "montant" en valeur numerqiue
+        data['montant'] = data['montant'].astype(str).str.replace(',', '.')
+        data['montant'] = pd.to_numeric(data['montant'] , errors='coerce')
+        
         #Supprimer les lignes où la valeur dans la colonne “montant" égale à 0
-        data=data[(data['montant']!='')]
+        data=data[(data['montant']!=0)]
+        # Nettoyer les espaces en début et fin de chaîne dans la colonne 'Analytic' et remplacer les valeurs NaN par des chaînes vides
+        data['Analytic'] = data['Analytic'].str.strip().fillna('')
         # Supprimer les lignes où 'compte marocaine' commence par '6' et 'analytic' est vide
-        data = data[~((data['Compte Marocaine'].astype(str).str.startswith('6')) & (data['Analytic'].isnull()))]
+        data = data[~((data['Compte Marocaine'].astype(str).str.startswith('6')) & (data['Analytic'].str.strip() == ''))]
+
         #remplacer la valeur de dpartement par "551" ou compte marocaine=71972001
         data.loc[data['Compte Marocaine']== 71972001, "Departement"]= "551"
         #remplacer la valeur de dpartement par "531" ou compte marocaine=71973001
         data.loc[data['Compte Marocaine']== 71973001, 'Departement']= '531'
         #supprimer les lignes ou 'compte marocaine' commence par '7' et 'analytic' est vide 
-        data=data[~((data['Compte Marocaine'].astype(str).str.startswith('7')) & (data['Analytic'].isnull()))]
+        data=data[~((data['Compte Marocaine'].astype(str).str.startswith('7')) & (data['Analytic'].str.strip()==''))]
         #multiplier montant par "-1" si le signe=C
         data.loc[data['signe']=='C', 'montant']*= -1
         #supprimer les colonnes "signe" et "Analytic"
@@ -120,9 +117,7 @@ if uploaded_file is not None:
         # Limiter à 30 caractères si nécessaire
         data['Référence'] = data['Référence'].str[:30] 
 
-        data['Compte Marocaine'] = data['Compte Marocaine'].astype(str).str.replace(',', '')
-        data['Compte US'] = data['Compte US'].astype(str).str.replace(',', '')
-        #data['montant'] = data['montant'].astype(str).str.replace(',', '')
+       
 
         
         st.write("Manipulations appliquées :")
