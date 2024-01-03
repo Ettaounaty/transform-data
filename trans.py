@@ -46,7 +46,7 @@ st.markdown(
 
 
 # Titre de l'application
-st.title('Importation et Manipulation de Fichiers Texte')
+st.title('MImportation et Manipulation de Fichiers Texte')
 
 
 
