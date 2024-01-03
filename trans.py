@@ -77,8 +77,8 @@ if uploaded_file is not None:
 
         
         #conversion colonne "montant" en valeur numerqiue
-        data['montant'] = data['montant'].astype(str).str.replace(',', '.')
-        data['montant'] = pd.to_numeric(data['montant'] , errors='coerce')
+        #data['montant'] = data['montant'].astype(str).str.replace(',', '.')
+        #data['montant'] = pd.to_numeric(data['montant'] , errors='coerce')
         
         #Supprimer les lignes où la valeur dans la colonne “montant" égale à 0
         #data=data[(data['montant']!=0)]
