@@ -120,8 +120,8 @@ if uploaded_file is not None:
        
 
         
-        st.write("Manipulations appliquées :")
-        st.write(data)  # Afficher un aperçu des données après manipulation
+        #st.write("Manipulations appliquées :")
+        #st.write(data)  # Afficher un aperçu des données après manipulation
         
         # Section d'exportation vers Excel avec choix de l'emplacement
         
