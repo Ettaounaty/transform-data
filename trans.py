@@ -46,7 +46,7 @@ st.markdown(
 
 
 # Titre de l'application
-st.title('MImportation et Manipulation de Fichiers Texte')
+st.title('Importation et Manipulation de Fichiers Texte')
 
 
 
@@ -77,11 +77,14 @@ if uploaded_file is not None:
 
         
         #conversion colonne "montant" en valeur numerqiue
-        #data['montant'] = data['montant'].astype(str).str.replace(',', '.')
-        #data['montant'] = pd.to_numeric(data['montant'] , errors='coerce')
+        data['montant'] = data['montant'].astype(str).str.replace(',', '.')
+        data['montant'] = pd.to_numeric(data['montant'])
+        
         
         #Supprimer les lignes où la valeur dans la colonne “montant" égale à 0
-        #data=data[(data['montant']!=0)]
+        data=data[(data['montant']!=0)]
+        data['montant'] = data['montant'].astype(str).str.replace(',', '')
+
         # Nettoyer les espaces en début et fin de chaîne dans la colonne 'Analytic' et remplacer les valeurs NaN par des chaînes vides
         #data['Analytic'] = data['Analytic'].str.strip().fillna('')
         # Supprimer les lignes où 'compte marocaine' commence par '6' et 'analytic' est vide
@@ -120,8 +123,8 @@ if uploaded_file is not None:
        
 
         
-        #st.write("Manipulations appliquées :")
-        #st.write(data)  # Afficher un aperçu des données après manipulation
+        st.write("Manipulations appliquées :")
+        st.write(data)  # Afficher un aperçu des données après manipulation
         
         # Section d'exportation vers Excel avec choix de l'emplacement
         
