@@ -82,7 +82,7 @@ if uploaded_file is not None:
         
         
         #Supprimer les lignes où la valeur dans la colonne “montant" égale à 0
-        #data=data[(data['montant']!=0)]
+        data=data[(data['montant']!=0)]
         #multiplier montant par "-1" si le signe=C
         data.loc[data['signe']=='C', 'montant']*= -1
         data['montant'] = data['montant'].astype(str).str.replace(',', '')
