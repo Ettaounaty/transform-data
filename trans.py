@@ -132,7 +132,7 @@ if uploaded_file is not None:
         # Concaténer les colonnes 'Description' et 'Reference' en une seule colonne 'Description'
         data['Description'] = data['Description'] + ' ' + data['Référence']
         data.drop(columns=['Référence'], inplace=True)
-        data=data[["Date", "Période", "Compte US", "Compte Marocaine", "Description", "montant", "Devise", "Departement"]]
+        data=data[["code jv", "Date", "Période", "Compte US", "Compte Marocaine", "Description", "montant", "Devise", "Departement"]]
 
        
 
