@@ -109,6 +109,10 @@ if uploaded_file is not None:
         Departement=data['Departement']
         data.drop(columns=['Departement'], inplace=True)
         data['Departement']=Departement
+        
+        # Ajouter une colonne 'code jv'
+        data['code jv'] = '2'  
+        data.loc[0, 'code jv'] = '1.2'
         #pour la date actuelle
         date_actuelle = datetime.now()
         #ajouter colonne "date" contenant la date de deernier jour de mos precedent
