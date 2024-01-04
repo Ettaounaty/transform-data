@@ -83,7 +83,10 @@ if uploaded_file is not None:
         
         #Supprimer les lignes où la valeur dans la colonne “montant" égale à 0
         data=data[(data['montant']!=0)]
+        #multiplier montant par "-1" si le signe=C
+        data.loc[data['signe']=='C', 'montant']*= -1
         data['montant'] = data['montant'].astype(str).str.replace(',', '')
+        #data['montant'] = data['montant'].astype(str).str.replace('.', ',')
 
         # Nettoyer les espaces en début et fin de chaîne dans la colonne 'Analytic' et remplacer les valeurs NaN par des chaînes vides
         data['Analytic'] = data['Analytic'].str.strip().fillna('')
@@ -96,8 +99,7 @@ if uploaded_file is not None:
         data.loc[data['Compte Marocaine']== '71973001', 'Departement']= '531'
         #supprimer les lignes ou 'compte marocaine' commence par '7' et 'analytic' est vide 
         data=data[~((data['Compte Marocaine'].astype(str).str.startswith('7')) & (data['Analytic'].str.strip()==''))]
-        #multiplier montant par "-1" si le signe=C
-        data.loc[data['signe']=='C', 'montant']*= -1
+        
         #supprimer les colonnes "signe" et "Analytic"
         data.drop(columns=['signe', 'Analytic'], inplace=True)
         #ajouter colonne devise avec la valeur "MAD"
@@ -125,6 +127,7 @@ if uploaded_file is not None:
         data.drop(columns=['Référence'], inplace=True)
         data=data[["Date", "Période", "Compte US", "Compte Marocaine", "Description", "montant", "Devise", "Departement"]]
 
+       
 
        
 
