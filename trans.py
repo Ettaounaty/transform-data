@@ -64,7 +64,8 @@ if uploaded_file is not None:
     apply_transformations = st.radio("Voulez-vous appliquer des transformations sur ces données ?", ('Oui', 'Non'), index=(1))
 
     if apply_transformations == 'Oui':
-        
+        #supprimer premier ligne
+        #data = data.drop(data.index[0])
         #supprimer les trois premiers colonnes
         data.drop(columns=[0,1,2,8,11,12], inplace=True)
         # Renommer les colonnes restantes
