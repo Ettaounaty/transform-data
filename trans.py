@@ -115,6 +115,7 @@ if uploaded_file is not None:
         data['Date'] =(date_actuelle.replace(day=1) - timedelta(days=1)).date()
         # Convertir la colonne 'Date' en type datetime
         data['Date'] = pd.to_datetime(data['Date'])
+        data['Date'] = data['Date'].dt.date
         # Extraire l'année et le mois pour former la colonne 'Période'
         data['Période'] = data['Date'].dt.strftime('%Y%m')  
         data['Période'] = data['Période'].str.slice(0, 4) + data['Date'].dt.strftime('%m').str.zfill(3)
