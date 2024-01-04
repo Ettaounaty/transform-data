@@ -65,7 +65,7 @@ if uploaded_file is not None:
 
     if apply_transformations == 'Oui':
         #supprimer premier ligne
-        data = data.drop(data.index[0])
+        #data = data.drop(data.index[0])
         #supprimer les trois premiers colonnes
         data.drop(columns=[0,1,2,8,11,12], inplace=True)
         # Renommer les colonnes restantes
