@@ -112,7 +112,7 @@ if uploaded_file is not None:
         
         # Ajouter une colonne 'code jv'
         data['code jv'] = '2'  
-        data.loc[0, 'code jv'] = '1.2'
+        data.loc[2, 'code jv'] = '1.2'
         #pour la date actuelle
         date_actuelle = datetime.now()
         #ajouter colonne "date" contenant la date de deernier jour de mos precedent
