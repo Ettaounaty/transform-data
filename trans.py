@@ -85,7 +85,7 @@ if uploaded_file is not None:
         data=data[(data['montant']!=0)]
         #multiplier montant par "-1" si le signe=C
         data.loc[data['signe']=='C', 'montant']*= -1
-        #data['montant'] = data['montant'].astype(str).str.replace(',', '')
+        data['montant'] = data['montant'].astype(str).str.replace(',', '')
         #data['montant'] = data['montant'].astype(str).str.replace('.', ',')
 
         # Nettoyer les espaces en début et fin de chaîne dans la colonne 'Analytic' et remplacer les valeurs NaN par des chaînes vides
