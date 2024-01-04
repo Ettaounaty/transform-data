@@ -64,7 +64,7 @@ if uploaded_file is not None:
     apply_transformations = st.radio("Voulez-vous appliquer des transformations sur ces données ?", ('Oui', 'Non'), index=(1))
 
     if apply_transformations == 'Oui':
-        # Manipulations avec le code Python que vous avez déjà
+        
         #supprimer les trois premiers colonnes
         data.drop(columns=[0,1,2,8,11,12], inplace=True)
         # Renommer les colonnes restantes
@@ -119,6 +119,12 @@ if uploaded_file is not None:
         data['Référence'] = 'Paie perm mois ' + data['Date'].dt.strftime('%m-%Y')
         # Limiter à 30 caractères si nécessaire
         data['Référence'] = data['Référence'].str[:30] 
+
+        # Concaténer les colonnes 'Description' et 'Reference' en une seule colonne 'Description'
+        data['Description'] = data['Description'] + ' ' + data['Référence']
+        data.drop(columns=['Référence'], inplace=True)
+        data=data[["Date", "Période", "Compte US", "Compte Marocaine", "Description", "montant", "Devise", "Departement"]]
+
 
        
 
