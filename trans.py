@@ -114,7 +114,7 @@ if uploaded_file is not None:
         #ajouter colonne "date" contenant la date de deernier jour de mos precedent
         data['Date'] =(date_actuelle.replace(day=1) - timedelta(days=1)).date()
         # Convertir la colonne 'Date' en type datetime
-        data['Date'] = pd.to_datetime(data['Date'], format='%Y-%m-%d').dt.date
+        data['Date'] = pd.to_datetime(data['Date'])
 
         
         # Extraire l'année et le mois pour former la colonne 'Période'
