@@ -109,7 +109,8 @@ if uploaded_file is not None:
         Departement=data['Departement']
         data.drop(columns=['Departement'], inplace=True)
         data['Departement']=Departement
-        
+        #
+        nouvelle_premiere_ligne = data.iloc[0]
         # Ajouter une colonne 'code jv'
         data['code jv'] = '2'  
         data.loc[2, 'code jv'] = '1.2'
@@ -141,7 +142,7 @@ if uploaded_file is not None:
         
         st.write("Manipulations appliquées :")
         st.write(data)  # Afficher un aperçu des données après manipulation
-        
+        st.write(nouvelle_premiere_ligne)
         # Section d'exportation vers Excel avec choix de l'emplacement
         
         #st.header("Exporter vers Excel")
