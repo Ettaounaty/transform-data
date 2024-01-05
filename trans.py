@@ -110,10 +110,10 @@ if uploaded_file is not None:
         data.drop(columns=['Departement'], inplace=True)
         data['Departement']=Departement
         #
-        nouvelle_premiere_ligne = data.iloc[0]
+        premiere_ligne = data.iloc[0].to_string()
         # Ajouter une colonne 'code jv'
         data['code jv'] = '2'  
-        data.loc[2, 'code jv'] = '1.2'
+        data.loc[premier_ligne, 'code jv'] = '1.2'
         #pour la date actuelle
         date_actuelle = datetime.now()
         #ajouter colonne "date" contenant la date de deernier jour de mos precedent
