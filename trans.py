@@ -91,14 +91,14 @@ if uploaded_file is not None:
         # Nettoyer les espaces en début et fin de chaîne dans la colonne 'Analytic' et remplacer les valeurs NaN par des chaînes vides
         data['Analytic'] = data['Analytic'].str.strip().fillna('')
         # Supprimer les lignes où 'compte marocaine' commence par '6' et 'analytic' est vide
-        data = data[~((data['Compte Marocaine'].astype(str).str.startswith('6')) & (data['Analytic'].str.strip() == ''))]
+        data = data[~((data['Compte Marocaine'].astype(str).str.startswith('6')) & (data['Analytic']== ''))]
 
         #remplacer la valeur de dpartement par "551" ou compte marocaine=71972001
         data.loc[data['Compte Marocaine']== '71972001', "Departement"]= "551"
         #remplacer la valeur de dpartement par "531" ou compte marocaine=71973001
         data.loc[data['Compte Marocaine']== '71973001', 'Departement']= '531'
         #supprimer les lignes ou 'compte marocaine' commence par '7' et 'analytic' est vide 
-        data=data[~((data['Compte Marocaine'].astype(str).str.startswith('7')) & (data['Analytic'].str.strip()==''))]
+        data=data[~((data['Compte Marocaine'].astype(str).str.startswith('7')) & (data['Analytic']==''))]
         
         #supprimer les colonnes "signe" et "Analytic"
         data.drop(columns=['signe', 'Analytic'], inplace=True)
