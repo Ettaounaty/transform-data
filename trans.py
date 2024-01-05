@@ -110,7 +110,7 @@ if uploaded_file is not None:
         data.drop(columns=['Departement'], inplace=True)
         data['Departement']=Departement
         #
-        #premiere_ligne = data.iloc[0].to_string()
+        data.reset_index(drop=True, inplace=True)
         # Ajouter une colonne 'code jv'
         data['code jv'] = '2'  
         data.loc[0, 'code jv'] = '1.2'
