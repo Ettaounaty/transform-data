@@ -86,7 +86,7 @@ if uploaded_file is not None:
         #multiplier montant par "-1" si le signe=C
         data.loc[data['signe']=='C', 'montant']*= -1
         data['montant'] = data['montant'].astype(str).str.replace(',', '')
-        #data['montant'] = data['montant'].astype(str).str.replace('.', ',')
+        data['montant'] = data['montant'].astype(str).str.replace('.', ',')
 
         # Nettoyer les espaces en début et fin de chaîne dans la colonne 'Analytic' et remplacer les valeurs NaN par des chaînes vides
         data['Analytic'] = data['Analytic'].str.strip().fillna('')
@@ -112,7 +112,7 @@ if uploaded_file is not None:
         data.reset_index(drop=True, inplace=True)
         # Ajouter une colonne 'code jv'
         data['code jv'] = '2'  
-        data.loc[0, 'code jv'] = '1.2'
+        data.loc[0, 'code jv'] = '1;2'
         #pour la date actuelle
         date_actuelle = datetime.now()
         #ajouter colonne "date" contenant la date de deernier jour de mos precedent
