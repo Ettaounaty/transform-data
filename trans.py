@@ -141,6 +141,17 @@ if uploaded_file is not None:
         
         st.write("Manipulations appliquées :")
         st.write(data, index=False)  # Afficher un aperçu des données après manipulation
+        # Utilisation de BytesIO pour stocker les données Excel
+        excel_buffer = io.BytesIO()
+
+        # Écriture du DataFrame dans un fichier Excel sans l'index
+        data.to_excel(excel_buffer, index=False)
+
+        # Préparation du téléchargement
+        excel_buffer.seek(0)
+        st.download_button(label="Télécharger Excel", data=excel_buffer, file_name='output.xlsx', mime='application/vnd.openxmlformats-officedocument.spreadsheetml.sheet')
+
+       
         #st.write(nouvelle_premiere_ligne)
         # Section d'exportation vers Excel avec choix de l'emplacement
         
