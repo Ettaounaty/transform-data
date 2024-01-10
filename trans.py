@@ -2,7 +2,6 @@ import streamlit as st
 from datetime import date, datetime, timedelta
 import pandas as pd
 import io
-import openpyxl
 
 
 st.set_page_config(layout="wide", page_title='Banyan Tree')  # Définit la page en mode wide
